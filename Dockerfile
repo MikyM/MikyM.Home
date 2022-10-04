@@ -23,7 +23,7 @@ RUN yarn run build
 FROM nginx:latest AS ngi
 # Copying compiled code and nginx config to different folder
 # NOTE: This path may change according to your project's output folder 
-COPY --from=build /dist/miky-m-home /usr/share/nginx/html
+COPY --from=build /usr/local/app/dist/miky-m-home /usr/share/nginx/html
 COPY /nginx.conf  /etc/nginx/conf.d/default.conf
 
 # Expose port 80
