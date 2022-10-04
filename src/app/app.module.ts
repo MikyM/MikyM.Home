@@ -9,6 +9,8 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
+import { NgParticlesModule } from "ng-particles";
+import { NgModule } from "@angular/core";
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { MaintenanceComponent } from './maintenance/maintenance.component';
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgParticlesModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
