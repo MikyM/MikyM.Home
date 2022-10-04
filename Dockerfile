@@ -16,8 +16,6 @@ RUN npm install
 
 RUN npm install -g @angular/cli
 
-RUN npm install -g yarn
-
 RUN yarn build
 
 RUN yarn run start --port 80 --host 0.0.0.0
