@@ -9,6 +9,8 @@ WORKDIR /usr/local/app
 # Add the source code to app
 COPY ./ /usr/local/app/
 
+RUN apt-get install apt-transport-https ca-certificates
+
 # Install all the dependencies
 RUN npm install
 
