@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MoveDirection, ClickMode, HoverMode, OutMode } from "tsparticles-engine";
 import { loadFull } from "tsparticles"
+import { Container, Engine } from "tsparticles-engine"
 
 @Component({
   selector: 'app-maintenance',
@@ -14,9 +15,13 @@ export class MaintenanceComponent implements OnInit {
   id = "tsparticles";
 
   particlesOptions = {
+    fullScreen: {
+      enable: true,
+      zIndex: 0 // or any value is good for you, if you use -1 set `interactivity.detectsOn` to `"window"` if you need mouse interactions
+    },
     background: {
       color: {
-        value: "#0d47a1"
+        value: "#161C3C"
       }
     },
     fpsLimit: 120,
@@ -34,23 +39,23 @@ export class MaintenanceComponent implements OnInit {
       },
       modes: {
         push: {
-          quantity: 4
+          quantity: 3
         },
         repulse: {
-          distance: 200,
-          duration: 0.4
+          distance: 100,
+          duration: 0.2
         }
       }
     },
     particles: {
       color: {
-        value: "#ffffff"
+        value: "#fffffa"
       },
       links: {
         color: "#ffffff",
-        distance: 150,
+        distance: 120,
         enable: true,
-        opacity: 0.5,
+        opacity: 0.3,
         width: 1
       },
       collisions: {
@@ -63,7 +68,7 @@ export class MaintenanceComponent implements OnInit {
           default: OutMode.bounce
         },
         random: false,
-        speed: 6,
+        speed: 1.6,
         straight: false
       },
       number: {
@@ -92,10 +97,6 @@ export class MaintenanceComponent implements OnInit {
 
   async particlesInit(engine: Engine): Promise<void> {
     console.log(engine);
-
-    // Starting from 1.19.0 you can add custom presets or shape here, using the current tsParticles instance (main)
-    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-    // starting from v2 you can add only the features you need reducing the bundle size
     await loadFull(engine);
   }
   
