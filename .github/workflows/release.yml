@@ -31,7 +31,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_REGISTRY }}/mikym-home
+          tags: ${{ secrets.DOCKER_REGISTRY }}/mikym-page:latest
       - 
         name: Sleep for 10 seconds
         uses: jakejarvis/wait-action@master
