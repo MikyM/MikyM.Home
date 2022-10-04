@@ -14,11 +14,17 @@ RUN apt-get install apt-transport-https ca-certificates
 # Install all the dependencies
 RUN npm install
 
+RUN npm cache clean --force
+
 RUN npm install -g @angular/cli
 
-RUN yarn build
+RUN yarn run build
 
-RUN yarn run start --port 80 --host 0.0.0.0
+FROM nginx:latest AS ngi
+# Copying compiled code and nginx config to different folder
+# NOTE: This path may change according to your project's output folder 
+COPY --from=build /dist/src/app/dist/miky-m-home /usr/share/nginx/html
+COPY /nginx.conf  /etc/nginx/conf.d/default.conf
 
 # Expose port 80
 EXPOSE 80
